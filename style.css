@@ -51,12 +51,38 @@ body {
     /* ========================================= */
 }
 
-/* Header/Logo */
+/* // =================================================================
+// EDITED HEADER STYLES 
+// =================================================================
+*/
+
 .page-header {
-    text-align: center;
-    margin-bottom: 30px;
+    /* REMOVED: text-align: center; */
+    margin-bottom: 30px; /* Reduced for a more compact look */
     padding-top: 20px;
 }
+
+/* NEW: Flex container to hold Logo, Search, and Spacer for 3-part layout */
+.header-flex-container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+.header-logo-section {
+    /* Ensures Logo stays small and doesn't take up much space */
+    flex-shrink: 0; 
+    text-align: left; /* Logo text alignment is now left */
+}
+
+.header-spacer {
+    /* Used to push the search bar to the center by taking up flexible space 
+       on the right. It acts as a mirror to the logo section. */
+    flex-grow: 1; 
+    min-width: 50px; 
+}
+
 .logo {
     font-size: 3rem;
     font-weight: 900;
@@ -74,7 +100,7 @@ body {
     opacity: 0.8;
 }
 
-/* Main Content Layout */
+/* Main Content Layout - NO CHANGE */
 .content-wrapper {
     display: flex;
     gap: 30px;
@@ -97,7 +123,7 @@ body {
 }
 
 /* =================================================================
-// NEW TAB STYLES 
+// NEW TAB STYLES (NO CHANGE)
 // ================================================================= */
 .sidebar-tabs {
     display: flex;
@@ -142,7 +168,7 @@ body {
 .hidden { display: none; } 
 
 /* =================================================================
-// REVIEWS AND BUTTON STYLES
+// REVIEWS AND BUTTON STYLES (NO CHANGE)
 // ================================================================= */
 
 .review-item {
@@ -194,14 +220,14 @@ body {
     margin-right: 8px;
 }
 
-/* Search Box */
+/* Search Box - EDITED */
 .main-search-container {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-bottom: 30px; -- REMOVED */
+    max-width: 600px; /* Reduced max-width for better centering */
+    /* REMOVED: margin-left: auto; margin-right: auto; */
+    flex-grow: 2; /* Allows it to take up more space in the header flex container */
     position: relative;
 }
 
@@ -239,12 +265,12 @@ body {
     color: white;
 }
 
-/* Suggestions Box */
+/* Suggestions Box - EDITED */
 .suggestions-box {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 70px; 
+    right: 70px; /* Aligns with the width of the input + button setup */
     z-index: 10;
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--primary-color);
@@ -267,7 +293,7 @@ body {
     color: white;
 }
 
-/* Category Selector */
+/* Category Selector (NO CHANGE) */
 .dest-selector {
     text-align: center;
     margin-bottom: 20px;
@@ -296,7 +322,7 @@ body {
     border-color: var(--primary-color);
 }
 
-/* Itinerary Table Card (Glassmorphism) */
+/* Itinerary Table Card (Glassmorphism) - NO CHANGE */
 .itinerary-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
@@ -316,7 +342,7 @@ body {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Table Styles */
+/* Table Styles - NO CHANGE */
 .table-responsive {
     overflow-x: auto;
 }
@@ -357,7 +383,7 @@ tbody tr:hover {
     transition: background 0.3s;
 }
 
-/* Footer Actions (Main Planner Card) */
+/* Footer Actions (Main Planner Card) - NO CHANGE */
 .card-footer-actions {
     display: flex;
     justify-content: space-between;
@@ -367,7 +393,7 @@ tbody tr:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Price Display */
+/* Price Display - NO CHANGE */
 .price-display {
     text-align: left;
 }
@@ -385,7 +411,7 @@ tbody tr:hover {
     color: var(--primary-color);
 }
 
-/* Buttons */
+/* Buttons - NO CHANGE */
 .reset-search-btn {
     padding: 12px 25px;
     background: rgba(255, 255, 255, 0.1);
@@ -405,7 +431,7 @@ tbody tr:hover {
     border-color: white;
 }
 
-/* Book Now Button */
+/* Book Now Button - NO CHANGE */
 .book-now-btn {
     padding: 12px 25px;
     background: var(--primary-color);
@@ -424,8 +450,30 @@ tbody tr:hover {
 }
 
 
-/* Responsive design */
+/* // =================================================================
+// EDITED RESPONSIVE DESIGN
+// =================================================================
+*/
 @media (max-width: 1050px) {
+    /* New: Stack the logo and search bar vertically */
+    .header-flex-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .header-logo-section {
+        text-align: center; 
+    }
+    .header-spacer {
+        display: none; /* Hide the spacer when stacking */
+    }
+    .main-search-container {
+        width: 100%;
+        max-width: 90%; /* Allow it to stretch better */
+        margin-bottom: 20px;
+    }
+
+    /* Existing: Stack main content and sidebar vertically */
     .content-wrapper {
         flex-direction: column; 
     }
@@ -443,6 +491,8 @@ tbody tr:hover {
     .main-search-container {
         flex-direction: column;
         max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
     .main-search-input {
         margin-bottom: 10px;
@@ -480,7 +530,7 @@ tbody tr:hover {
     }
 }
 /* =================================================================
-// FOOTER STYLES
+// FOOTER STYLES (NO CHANGE)
 // ================================================================= */
 
 .page-footer {
