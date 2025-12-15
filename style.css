@@ -133,6 +133,7 @@ body {
 
 .tab-button {
     flex-grow: 1;
+    min-width: 0; 
     padding: 10px 5px;
     background: transparent;
     border: none;
