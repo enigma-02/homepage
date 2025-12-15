@@ -1,0 +1,580 @@
+:root {
+    /* Default Devotional Theme Colors */
+    --primary-color: #ff9100; /* Bright Orange/Saffron */
+    --secondary-color: #e65100; /* Deep Orange */
+    
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-light: #f0f0f0;
+    
+    /* New variable for dynamic background */
+    --background-gradient: radial-gradient(circle at top right, #331a00 0%, #000000 100%);
+}
+html {
+    /* Make sure the HTML element takes up full height */
+    height: 100%; 
+}
+/* ... (Rest of your :root and other global variables) */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f12; /* Dark background */
+    color: var(--text-light);
+    overflow-x: hidden;
+    transition: color 0.3s ease; 
+    
+    /* === NEW STICKY FOOTER STYLES (REQUIRED) === */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body takes up at least the height of the viewport */
+    /* ========================================= */
+}
+
+/* ... (Rest of the background-overlay styles) */
+
+/* Background overlay with dynamic gradient */
+.background-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--background-gradient);
+    z-index: -1;
+    transition: background 0.5s ease; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    /* === NEW STICKY FOOTER STYLES (REQUIRED) === */
+    flex-grow: 1; /* Pushes the footer to the bottom */
+    /* ========================================= */
+}
+
+/* ... (Rest of the main CSS file) */
+
+/* Header/Logo */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+.logo {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    margin: 0;
+}
+.logo span {
+    color: var(--text-light);
+}
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Main Content Layout */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.planner-main-content {
+    flex-grow: 1;
+    min-width: 65%;
+}
+
+.review-sidebar {
+    width: 30%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.review-sidebar h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.review-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--secondary-color);
+}
+.review-text {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0 0 10px 0;
+}
+.review-author {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: right;
+    color: var(--primary-color);
+}
+.more-reviews-btn {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    background: var(--secondary-color);
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.more-reviews-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Search Box */
+.main-search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.main-search-input {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-light);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.main-search-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(255, 145, 0, 0.4);
+}
+
+.main-search-btn {
+    background: var(--primary-color);
+    color: black;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.main-search-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Suggestions Box */
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 70px; /* Aligns with the input field, accounting for the button width */
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--primary-color);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.suggestion-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: background 0.2s, color 0.2s;
+}
+
+.suggestion-item:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Category Selector */
+.dest-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dest-btn {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.dest-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dest-btn.active {
+    background: var(--primary-color);
+    color: black;
+    border-color: var(--primary-color);
+}
+
+/* Itinerary Table Card (Glassmorphism) */
+.itinerary-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.5s ease;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.itinerary-card h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.hidden { display: none; }
+
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead th {
+    background: var(--secondary-color);
+    color: black;
+    padding: 15px 10px;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody td {
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+/* Footer Actions */
+.card-footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Price Display */
+.price-display {
+    text-align: left;
+}
+
+.price-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.price-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.reset-search-btn {
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    margin-right: 15px; /* Space before book now */
+}
+
+.reset-search-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-color: white;
+}
+
+/* Book Now Button */
+.book-now-btn {
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.book-now-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+
+/* Responsive design */
+@media (max-width: 1050px) {
+    .content-wrapper {
+        flex-direction: column; 
+    }
+    .review-sidebar {
+        width: 100%; 
+        order: 1; 
+        margin-bottom: 20px;
+    }
+    .planner-main-content {
+        order: 2;
+    }
+}
+
+@media (max-width: 650px) {
+    .main-search-container {
+        flex-direction: column;
+        max-width: 90%;
+    }
+    .main-search-input {
+        margin-bottom: 10px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .main-search-btn {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px 25px;
+    }
+    .suggestions-box {
+        right: 0;
+        width: 100%;
+        margin-top: -10px;
+    }
+    .card-footer-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .reset-search-btn {
+        order: 2;
+        margin-top: 15px;
+        margin-right: 0;
+    }
+    .book-now-btn {
+        order: 3;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .price-display {
+        order: 1;
+        text-align: center;
+    }
+}
+/* =================================================================
+// FOOTER STYLES
+// ================================================================= */
+
+.page-footer {
+    padding: 30px 20px;
+    margin-top: 50px;
+    text-align: center;
+    /* Glass effect for the footer */
+    background: rgba(255, 255, 255, 0.03); 
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-light);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+}
+
+.page-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Social Media Icons */
+.social-links a {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Footer Responsiveness */
+@media (max-width: 650px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    .page-footer p {
+        margin-bottom: 15px;
+    }
+    .social-links a {
+        margin: 0 10px; /* Adjust spacing for mobile */
+    }
+}
+/* ... (Keep existing CSS up to .review-sidebar) ... */
+
+.review-sidebar {
+    width: 30%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Added to ensure icon color is primary */
+    line-height: 1.5; 
+}
+
+.review-sidebar h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.review-sidebar h3 .fa {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+.review-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--secondary-color);
+}
+.review-text {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+}
+.review-author {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: right;
+    color: var(--primary-color);
+}
+
+/* Updated styling for the new sidebar buttons (used to be 'more-reviews-btn') */
+.sidebar-action-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    background: var(--secondary-color);
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+    font-size: 0.95rem;
+}
+.sidebar-action-btn:hover {
+    background: var(--primary-color);
+    color: white; /* Changed hover color to white for contrast */
+}
+
+/* Style for Career Link to make it stand out a bit more */
+.sidebar-action-btn.career-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.sidebar-action-btn.career-link:hover {
+    background: var(--primary-color);
+    color: black;
+}
+
+.sidebar-action-btn .fa {
+    margin-right: 8px;
+}
+
+/* --- The following media query block remains unchanged --- */
+@media (max-width: 1050px) {
+    .content-wrapper {
+        flex-direction: column; 
+    }
+    .review-sidebar {
+        width: 100%; 
+        order: 1; 
+        margin-bottom: 20px;
+    }
+    .planner-main-content {
+        order: 2;
+    }
+}
+/* ... (Keep the rest of the existing CSS file) ... */

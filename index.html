@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayfare - 5 Day Planner</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <header class="page-header">
+            <h1 class="logo">Wayfare<span>.</span></h1>
+            <p class="subtitle">Search and Plan Your 5-Day Journey</p>
+        </header>
+
+        <div class="content-wrapper">
+            
+            <main class="planner-main-content">
+                
+                <div class="main-search-container">
+                    <input type="text" id="mainDestinationInput" class="main-search-input" 
+                           placeholder="Search your designated destinations... (e.g., Maldives, Goa)" 
+                           autocomplete="off">
+                    <button onclick="handleMainSearch()" class="main-search-btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <div id="suggestionsBox" class="suggestions-box"></div>
+                </div>
+
+                <div id="category-selector" class="dest-selector">
+                </div>
+                
+                <div id="itinerary-card" class="itinerary-card hidden">
+                    <h2 id="itinerary-title">Itinerary Details</h2>
+                    
+                    <div class="table-responsive">
+                        <table id="planner-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Destination/Activity</th>
+                                    <th>Lunch Spot</th>
+                                    <th>Evening Experience</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planner-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="card-footer-actions">
+                        <div class="price-display">
+                            <span class="price-label">Estimated Price:</span>
+                            <span id="estimatedPrice" class="price-value"></span>
+                        </div>
+                        <button onclick="resetPlanner()" class="reset-search-btn">Start New Search</button>
+                        <a href="https://enigma-02.github.io/wayfare_book_now_form/" 
+                           target="_blank" 
+                           class="book-now-btn">Book Now</a>
+                    </div>
+                    
+                </div> </main>
+
+            <aside class="review-sidebar">
+                <h3><i class="fa fa-info-circle"></i> Wayfare Services</h3>
+                
+                <div class="review-item">
+                    <p class="review-text">Wayfare offers personalized, meticulously planned 5-day itineraries across multiple categories (Devotional, Romantic, Solo, etc.) to ensure a perfect trip tailored to your style.</p>
+                </div>
+                
+                <a href="https://enigma-02.github.io/wayfare_book_now_form/" 
+                   target="_blank" 
+                   class="more-reviews-btn sidebar-action-btn">
+                   <i class="fa fa-plane"></i> Book Now Form
+                </a>
+                
+                <a href="https://enigma-02.github.io/wayfare_about_us/" 
+                   target="_blank" 
+                   class="more-reviews-btn sidebar-action-btn">
+                   <i class="fa fa-users"></i> About Us & Contact
+                </a>
+                
+                <a href="#" class="more-reviews-btn sidebar-action-btn career-link">
+                    <i class="fa fa-briefcase"></i> Career Opportunities
+                </a>
+                
+                <div class="review-item">
+                    <p class="review-author" style="text-align: center; margin-top: 10px;">Your ultimate travel companion.</p>
+                </div>
+            </aside>
+            </div>
+        
+    </div>
+    <footer class="page-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Wayfare. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
