@@ -32,8 +32,6 @@ body {
     /* ========================================= */
 }
 
-/* ... (Rest of the background-overlay styles) */
-
 /* Background overlay with dynamic gradient */
 .background-overlay {
     position: fixed;
@@ -52,8 +50,6 @@ body {
     flex-grow: 1; /* Pushes the footer to the bottom */
     /* ========================================= */
 }
-
-/* ... (Rest of the main CSS file) */
 
 /* Header/Logo */
 .page-header {
@@ -97,15 +93,57 @@ body {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    line-height: 1.5; 
 }
 
-.review-sidebar h3 {
+/* =================================================================
+// NEW TAB STYLES 
+// ================================================================= */
+.sidebar-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+    flex-grow: 1;
+    padding: 10px 5px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.3s, border-bottom 0.3s;
+    opacity: 0.6;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button:hover {
+    opacity: 0.9;
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    opacity: 1;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-content h3 {
+    /* Use for headings inside tab content */
     color: var(--primary-color);
     margin-top: 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
 }
+
+/* Hides inactive tab content, controlled by JS */
+.hidden { display: none; } 
+
+/* =================================================================
+// REVIEWS AND BUTTON STYLES
+// ================================================================= */
 
 .review-item {
     background: rgba(0, 0, 0, 0.2);
@@ -117,7 +155,8 @@ body {
 .review-text {
     font-style: italic;
     font-size: 0.95rem;
-    margin: 0 0 10px 0;
+    margin: 0;
+    line-height: 1.4;
 }
 .review-author {
     font-size: 0.8rem;
@@ -125,20 +164,34 @@ body {
     text-align: right;
     color: var(--primary-color);
 }
-.more-reviews-btn {
+
+.user-reviews-container {
+    padding-top: 0; 
+    margin-bottom: 20px;
+}
+
+/* Styles for all action buttons in the sidebar */
+.sidebar-action-btn {
     display: block;
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 12px;
+    margin-top: 15px;
     background: var(--secondary-color);
     color: black;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
+    font-size: 0.95rem;
 }
-.more-reviews-btn:hover {
+
+.sidebar-action-btn:hover {
     background: var(--primary-color);
+    color: white; 
+}
+
+.sidebar-action-btn .fa {
+    margin-right: 8px;
 }
 
 /* Search Box */
@@ -191,7 +244,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 70px; /* Aligns with the input field, accounting for the button width */
+    right: 70px; 
     z-index: 10;
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--primary-color);
@@ -263,9 +316,6 @@ body {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.hidden { display: none; }
-
-
 /* Table Styles */
 .table-responsive {
     overflow-x: auto;
@@ -307,7 +357,7 @@ tbody tr:hover {
     transition: background 0.3s;
 }
 
-/* Footer Actions */
+/* Footer Actions (Main Planner Card) */
 .card-footer-actions {
     display: flex;
     justify-content: space-between;
@@ -346,7 +396,7 @@ tbody tr:hover {
     font-weight: bold;
     transition: 0.3s;
     font-size: 0.9rem;
-    margin-right: 15px; /* Space before book now */
+    margin-right: 15px; 
 }
 
 .reset-search-btn:hover {
@@ -449,7 +499,7 @@ tbody tr:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allows wrapping on small screens */
+    flex-wrap: wrap; 
 }
 
 .page-footer p {
@@ -479,102 +529,6 @@ tbody tr:hover {
         margin-bottom: 15px;
     }
     .social-links a {
-        margin: 0 10px; /* Adjust spacing for mobile */
+        margin: 0 10px; 
     }
 }
-/* ... (Keep existing CSS up to .review-sidebar) ... */
-
-.review-sidebar {
-    width: 30%;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    /* Added to ensure icon color is primary */
-    line-height: 1.5; 
-}
-
-.review-sidebar h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-}
-
-.review-sidebar h3 .fa {
-    margin-right: 8px;
-    color: var(--secondary-color);
-}
-
-.review-item {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border-left: 3px solid var(--secondary-color);
-}
-.review-text {
-    font-style: italic;
-    font-size: 0.95rem;
-    margin: 0;
-    line-height: 1.4;
-}
-.review-author {
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-align: right;
-    color: var(--primary-color);
-}
-
-/* Updated styling for the new sidebar buttons (used to be 'more-reviews-btn') */
-.sidebar-action-btn {
-    display: block;
-    text-align: center;
-    padding: 12px;
-    margin-top: 15px;
-    background: var(--secondary-color);
-    color: black;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s, color 0.3s;
-    font-size: 0.95rem;
-}
-.sidebar-action-btn:hover {
-    background: var(--primary-color);
-    color: white; /* Changed hover color to white for contrast */
-}
-
-/* Style for Career Link to make it stand out a bit more */
-.sidebar-action-btn.career-link {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-}
-.sidebar-action-btn.career-link:hover {
-    background: var(--primary-color);
-    color: black;
-}
-
-.sidebar-action-btn .fa {
-    margin-right: 8px;
-}
-
-/* --- The following media query block remains unchanged --- */
-@media (max-width: 1050px) {
-    .content-wrapper {
-        flex-direction: column; 
-    }
-    .review-sidebar {
-        width: 100%; 
-        order: 1; 
-        margin-bottom: 20px;
-    }
-    .planner-main-content {
-        order: 2;
-    }
-}
-/* ... (Keep the rest of the existing CSS file) ... */

@@ -37,7 +37,7 @@ function setTheme(category) {
 }
 
 // =================================================================
-// TRAVEL DATA (Reverted: Image data removed)
+// TRAVEL DATA (ITINERARIES)
 // =================================================================
 const travelData = {
     // --- DEVOTIONAL DATA ---
@@ -46,7 +46,7 @@ const travelData = {
         { name: "Amritsar", category: "devotional", price: 12000, itinerary: [["1", "Golden Temple", "Langar", "Palki Sahib"], ["2", "Jallianwala Bagh", "Kulcha", "Wagah Border"], ["3", "Museum", "Dhaba", "Heritage Walk"], ["4", "Fort", "Makhan Fish", "Shopping"], ["5", "Temple", "Sweets", "Reflection"]] },
         { name: "Kyoto", category: "devotional", price: 92000, itinerary: [["1", "Shrine", "Market", "Temple"], ["2", "Pavilion", "Udon", "Zen"], ["3", "Rock Garden", "Buddhist Cuisine", "Bamboo"], ["4", "Gardens", "Tea House", "Gion"], ["5", "Temple Grounds", "Food Court", "Shrine"]] },
         { name: "The Vatican City", category: "devotional", price: 150000, itinerary: [["1", "Basilica", "Castel", "Stroll"], ["2", "Museums", "Trattoria", "Trastevere"], ["3", "Audience", "Pizza", "Basilica"], ["4", "Gardens", "Piazza", "Colosseum"], ["5", "Mausoleum", "Gelateria", "Departure"]] },
-        { name: "Tirupati", category: "devotional", price: 8000, itinerary: [["1", "Darshan", "Prasadam", "Rituals"], ["2", "Temple", "Thali", "Srinivasa"], ["3", "Waterfall", "Tiffin", "Market"], ["4", "Fort", "Restaurant", "Mutt"], ["5", "Water body", "Specialty", "Departure"]] }
+        { name: "Tirupati", category: "devotional", price: 8000, itinerary: [["1", "Darshan", "Prasadam", "Rituals"], ["2", "Temple", "Thali", "Srinivasa"], ["3", "Waterfall", "Tiffin", "Srinivasa"], ["4", "Fort", "Restaurant", "Mutt"], ["5", "Water body", "Specialty", "Departure"]] }
     ],
     // --- SOLO DATA ---
     solo: [
@@ -82,7 +82,6 @@ const travelData = {
     ]
 };
 
-// ... (Rest of the search, category, and reset functions remain the same)
 let allItineraries = [];
 Object.keys(travelData).forEach(cat => {
     travelData[cat].forEach(dest => {
@@ -204,7 +203,6 @@ function showCategorySelection(results) {
 
 // =================================================================
 // 3. ITINERARY TABLE LOADING FUNCTION 
-// **REVERTED: All image rendering logic removed.**
 // =================================================================
 function showItinerary(dest) {
     const card = document.getElementById('itinerary-card');
@@ -251,12 +249,42 @@ function resetPlanner() {
     setTheme('devotional');
 }
 
+// =================================================================
+// 5. SIDEBAR TAB SWITCHING LOGIC (NEW)
+// =================================================================
+function setupSidebarTabs() {
+    const tabButtons = document.querySelectorAll('.sidebar-tabs .tab-button');
+    // Select all potential tab contents (using a common class or selecting by ID prefix)
+    const tabContents = document.querySelectorAll('.review-sidebar .tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab'); // e.g., 'reviews' or 'services'
+
+            // 1. Deactivate all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // 2. Hide all content panes
+            tabContents.forEach(content => content.classList.add('hidden'));
+
+            // 3. Activate the clicked button
+            button.classList.add('active');
+
+            // 4. Show the corresponding content (using the ID pattern set in HTML)
+            const contentToShow = document.getElementById(`${targetTab}-content`);
+            if (contentToShow) {
+                contentToShow.classList.remove('hidden');
+            }
+        });
+    });
+}
 
 // =================================================================
 // INITIAL PAGE LOAD
 // =================================================================
 window.onload = () => {
     setupSearch();
+    setupSidebarTabs(); // Initialize the tab logic
     // Set a default theme on load (Devotional theme)
     setTheme('devotional');
 };

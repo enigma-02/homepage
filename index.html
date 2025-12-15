@@ -62,33 +62,64 @@
                            class="book-now-btn">Book Now</a>
                     </div>
                     
-                </div> </main>
+                </div> 
+            </main>
 
             <aside class="review-sidebar">
-                <h3><i class="fa fa-info-circle"></i> Wayfare Services</h3>
                 
-                <div class="review-item">
-                    <p class="review-text">Wayfare offers personalized, meticulously planned 5-day itineraries across multiple categories (Devotional, Romantic, Solo, etc.) to ensure a perfect trip tailored to your style.</p>
+                <div class="sidebar-tabs">
+                    <button class="tab-button active" data-tab="reviews">
+                        <i class="fa fa-star"></i> Reviews
+                    </button>
+                    <button class="tab-button" data-tab="services">
+                        <i class="fa fa-info-circle"></i> Services
+                    </button>
                 </div>
                 
-                <a href="https://enigma-02.github.io/wayfare_book_now_form/" 
-                   target="_blank" 
-                   class="more-reviews-btn sidebar-action-btn">
-                   <i class="fa fa-plane"></i> Book Now Form
-                </a>
+                <div id="reviews-content" class="tab-content active">
+                    <h3>Customer Feedback</h3>
+                    
+                    <div class="user-reviews-container">
+                        <div class="review-item">
+                            <p class="review-text">Booking our adventurous trip to Ladakh with Wayfare was an absolute game-changer. The itinerary was perfectly balanced, combining thrilling activities like river rafting with peaceful moments of reflection at Pangong Lake. The estimated price was spot-on, and the accommodation suggestions were authentic and comfortable. The customer service was responsive and ensured everything ran smoothly. Highly recommend for any adventure seeker!</p>
+                            <p class="review-author">— Parv, Adventurous Trip to Ladakh</p>
+                        </div>
+
+                        <div class="review-item">
+                            <p class="review-text">I used Wayfare to plan a solo trip to Kyoto, and the process was incredibly simple yet detailed. The focus on local experiences, from navigating the bamboo forest to finding hidden ramen spots, made the journey truly immersive. The 5-day planner gave me the freedom to explore at your own pace while still having a solid structure. The solo travel tips embedded within the planner were invaluable. Fantastic planning tool!</p>
+                            <p class="review-author">— Manvendra, Solo Trip to Kyoto</p>
+                        </div>
+                    </div>
+
+                    <a href="https://enigma-02.github.io/wayfare_reviews/" 
+                       target="_blank" 
+                       class="more-reviews-btn sidebar-action-btn full-width-link">
+                       <i class="fa fa-arrow-right"></i> View All Customer Reviews
+                    </a>
+                </div>
                 
-                <a href="https://enigma-02.github.io/wayfare_about_us/" 
-                   target="_blank" 
-                   class="more-reviews-btn sidebar-action-btn">
-                   <i class="fa fa-users"></i> About Us & Contact
-                </a>
+                <div id="services-content" class="tab-content hidden">
+                    <h3><i class="fa fa-briefcase"></i> Quick Links</h3>
+                    
+                    <div class="review-item">
+                        <p class="review-text" style="font-style: normal; margin-bottom: 0;">Wayfare offers personalized, meticulously planned 5-day itineraries across multiple categories (Devotional, Romantic, Solo, etc.) to ensure a perfect trip tailored to your style.</p>
+                    </div>
+                    
+                    <a href="https://enigma-02.github.io/forms/" 
+                       target="_blank" 
+                       class="more-reviews-btn sidebar-action-btn full-width-link">
+                       <i class="fa fa-plane"></i> Book Now Form
+                    </a>
+                    
+                    <a href="https://enigma-02.github.io/wayfare_about_us/" 
+                       target="_blank" 
+                       class="more-reviews-btn sidebar-action-btn full-width-link">
+                       <i class="fa fa-users"></i> About Us & Contact
+                    </a>
+                </div>
                 
-                <a href="#" class="more-reviews-btn sidebar-action-btn career-link">
-                    <i class="fa fa-briefcase"></i> Career Opportunities
-                </a>
-                
-                <div class="review-item">
-                    <p class="review-author" style="text-align: center; margin-top: 10px;">Your ultimate travel companion.</p>
+                <div class="review-item" style="margin-top: 20px;">
+                    <p class="review-author" style="text-align: center; margin-top: 0;">Your ultimate travel companion.</p>
                 </div>
             </aside>
             </div>
@@ -108,5 +139,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
